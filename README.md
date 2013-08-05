@@ -15,7 +15,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 
 ## Table of Contents
 
-* [Dot-Notation Syntax](#dot-notation-syntax)
+* [Property Access Notation](#property-access-notation)
 * [Spacing](#spacing)
 * [Conditionals](#conditionals)
 * [Methods](#methods)
@@ -37,20 +37,20 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Notifications](#notifications)
 * [Xcode Project](#xcode-project)
 
-## Dot-Notation Syntax
+## Property Access Notation
 
-Dot-notation should **always** be used for accessing and mutating properties. Bracket notation is preferred in all other instances.
+Dot-notation should **only** be used for accessing properties. Bracket notation should **always** be used for mutating properties.
 
 **For example:**  
 ```objc
-view.backgroundColor = [UIColor orangeColor];
-[UIApplication sharedApplication].delegate;
+[view setBackgroundColor:[UIColor orangeColor]];
+[otherView setBackgroundColor:view.backgroundColor];
 ```
 
 **Not:**
 ```objc
-[view setBackgroundColor:[UIColor orangeColor]];
-UIApplication.sharedApplication.delegate;
+view.backgroundColor = [UIColor orangeColor];
+otherView.backgroundColor = [view backgroundColor];
 ```
 
 ## Spacing
